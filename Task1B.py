@@ -3,7 +3,7 @@ from floodsystem.geo import stations_by_distance
 
 def show():
     
-    show_list0 = stations_by_distance(build_station_list(), (1, 2))
+    show_list0 = stations_by_distance(build_station_list(), (0, 0))
     show_list = []
 
     for items in range(0,10):
