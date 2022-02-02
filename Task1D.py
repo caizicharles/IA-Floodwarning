@@ -29,6 +29,18 @@ def execute_0():
 
 print(execute_0())
 
+def check():
+    
+    stations = build_station_list()
+    rivers = []
+    for station in stations:
+        rivers.append(station.river)
+
+    river = sorted(rivers)
+    return river
+
+print(check())
+
 """------------------------------------------"""
 
 def execute_1():
