@@ -9,3 +9,19 @@ class students:
         age_students.append(other.age)
         x = age_students.sort()
         return x
+
+
+student_1 = students("Ben" , "24")
+student_2 = students("Anabel" , "20")
+
+print(students.sort_age(student_1 , student_2))
+
+tuple_list = [(1 , 2) , (3 , 5) , (8 , 5)]
+first_tuple = []
+a = tuple_list[0][1]
+
+for i in range(len(tuple_list)):
+    first_tuple.append(tuple_list[i][0])
+
+
+print(first_tuple)
