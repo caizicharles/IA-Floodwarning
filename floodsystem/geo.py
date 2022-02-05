@@ -116,13 +116,13 @@ def rivers_by_station_number(stations, N):
     name_n_num_1 = sorted_by_key(name_n_num, 1, reverse=True)
 
     temp_0 = name_n_num_1[N]
+    temp_1 = []
 
     for i in range(0, N-1):
-        name_n_num_N.append(name_n_num_1[i])
+        temp_1.append(name_n_num_1[i])
 
-    for item in name_n_num_1:
-        if item[1] == temp_0[1]:
-            name_n_num_N.append(item)
+    [temp_1.append(item) for item in name_n_num_1 if item[1] == temp_0[1]]
+    [name_n_num_N.append(i) for i in temp_1 if i not in name_n_num_N]
 
     return name_n_num_N
 
