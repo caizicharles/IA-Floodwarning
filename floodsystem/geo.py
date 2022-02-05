@@ -25,7 +25,6 @@ def stations_by_distance(stations, p):
         name_n_dis.append((s_name[i], s_dis[i]))
 
     return sorted_by_key(name_n_dis, 1)
-    
 
 """------------------------------------------"""
 
@@ -62,7 +61,6 @@ def stations_within_radius(stations, centre, r):
 
 """------------------------------------------"""
 
-
 """Task 1D"""
 
 def rivers_with_station(stations):
@@ -73,6 +71,13 @@ def rivers_with_station(stations):
     #Get river names
     for river in stations:
         river_name.add(river.river)
+
+    #Eliminate rivers with no stations
+    for name in river_name:
+        for station in stations:
+            if name == station.river:
+                if station.name == None:
+                    river_name.remove(name)
 
     return river_name
 
