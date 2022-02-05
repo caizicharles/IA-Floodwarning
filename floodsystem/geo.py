@@ -99,6 +99,7 @@ def rivers_by_station_number(stations, N):
 
     name_of_rivers = set()
     name_n_num = []
+    name_n_num_1 = []
     name_n_num_N = []
     n = 0
 
@@ -112,14 +113,14 @@ def rivers_by_station_number(stations, N):
         name_n_num.append((river,n))
         n = 0
 
-    sorted_by_key(name_n_num, 1, reverse=True)
+    name_n_num_1 = sorted_by_key(name_n_num, 1, reverse=True)
 
-    temp_0 = name_n_num[N]
+    temp_0 = name_n_num_1[N]
 
-    for i in range(0,N-1):
-        name_n_num_N.append(name_n_num[i])
+    for i in range(0, N-1):
+        name_n_num_N.append(name_n_num_1[i])
 
-    for item in name_n_num:
+    for item in name_n_num_1:
         if item[1] == temp_0[1]:
             name_n_num_N.append(item)
 
