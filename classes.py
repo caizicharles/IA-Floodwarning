@@ -9,6 +9,10 @@ class students:
         age_students.append(other.age)
         x = age_students.sort()
         return x
+    
+    def age_square(self):
+        x = self.age
+        return x
 
 
 student_1 = students("Ben" , "24")
@@ -25,3 +29,5 @@ for i in range(len(tuple_list)):
 
 
 print(first_tuple)
+print(students.age_square(student_1))
+
