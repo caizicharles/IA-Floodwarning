@@ -97,32 +97,42 @@ def stations_by_river(stations):
 
 def rivers_by_station_number(stations, N):
 
-    name_of_rivers = set()
-    name_n_num = []
-    name_n_num_1 = []
-    name_n_num_N = []
-    n = 0
+    #Varaibles
+    name_of_rivers = set()      #Ensure no repeting names
+    name_n_num = []             #Unsorted
+    name_n_num_1 = []           #Sorted
+    name_n_num_N = []           #Final list WITH repetition check
+    n = 0                       #Number of stations count
 
+    #Get river names
     for names in stations:
         name_of_rivers.add(names.river)
 
+    #Get number of stations n on each river
     for river in name_of_rivers:
         for object in stations:
             if river == object.river:
                 n += 1
+        #Creating the list of tuples
         name_n_num.append((river,n))
         n = 0
-
+    
+    #Sort the list of tuples with the largest key first
     name_n_num_1 = sorted_by_key(name_n_num, 1, reverse=True)
-
-    temp_0 = name_n_num_1[N]
-    temp_1 = []
-
+    
+    #More variables
+    temp_0 = name_n_num_1[N]    #Get [N]
+    temp_1 = []                 #Final list but WITHOUT repetition check
+    
+    #First print from [0] to [N]
     for i in range(0, N-1):
         temp_1.append(name_n_num_1[i])
-
+    
+    #Add [N] and subsequent elements if n is the same
     [temp_1.append(item) for item in name_n_num_1 if item[1] == temp_0[1]]
-    [name_n_num_N.append(i) for i in temp_1 if i not in name_n_num_N]
+
+    #Check for repetitionn
+    [name_n_num_N.append(j) for j in temp_1 if j not in name_n_num_N]
 
     return name_n_num_N
 
