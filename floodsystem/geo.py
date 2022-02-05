@@ -10,15 +10,17 @@ from .utils import sorted_by_key  # noqa
 from haversine import haversine, Unit
 
 def stations_by_distance(stations, p):
-
-    name_n_dis = []
-    s_name = []
-    s_dis = []
-
+    
+    #Variables
+    name_n_dis = []      #Final list of tuples with name and distance to p
+    s_name = []          #List of names
+    s_dis = []           #List of distances
+    
     for location in stations:
-        s_name.append(location.name)
-        s_dis.append(haversine(location.coord, p))
+        s_name.append(location.name)                 #Get names
+        s_dis.append(haversine(location.coord, p))   #Calculate distances
 
+    #Create the list of tuples
     for i in range(len((s_name))):
         name_n_dis.append((s_name[i], s_dis[i]))
 
@@ -64,9 +66,11 @@ def stations_within_radius(stations, centre, r):
 """Task 1D"""
 
 def rivers_with_station(stations):
-
-    river_name = set()
-
+    
+    #Variable
+    river_name = set()        #River names, use set to prevent repetition
+    
+    #Get river names
     for river in stations:
         river_name.add(river.river)
 
@@ -75,18 +79,22 @@ def rivers_with_station(stations):
 
 def stations_by_river(stations):
 
-    river_name = set()
-    s_on_river = set()
-    s_dict = {}
+    #Variables
+    river_name = set()        #River names, use set to prevent repetition
+    s_on_river = set()        #Station names on a given river
+    s_dict = {}               #Dictionary of river name to stations on that river
     
+    #Get river names
     for location in stations:
         river_name.add(location.river)
     
+    #Get the names of the stations on a river
     for names in river_name:
         for items in stations:
             if items.river == names:
                 s_on_river.add(items.name)
         s_dict.update({names:s_on_river})
+        #Empties the set
         s_on_river = set()
  
     return s_dict
