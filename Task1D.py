@@ -27,19 +27,20 @@ def execute_0():
         
     return n, river_list
 
-print(execute_0())
+#print(execute_0())
 
 def check():
     
     stations = build_station_list()
     rivers = []
+
     for station in stations:
         rivers.append(station.river)
 
     river = sorted(rivers)
     return river
 
-print(check())
+#print(check())
 
 """------------------------------------------"""
 
@@ -58,4 +59,4 @@ def execute_1():
 
     return river_1, river_2, river_3
 
-print(execute_1())
+#print(execute_1())

@@ -95,5 +95,34 @@ def stations_by_river(stations):
 
 """Task 1E"""
 
+def rivers_by_station_number(stations, N):
+
+    name_of_rivers = set()
+    name_n_num = []
+    name_n_num_N = []
+    n = 0
+
+    for names in stations:
+        name_of_rivers.add(names.river)
+
+    for river in name_of_rivers:
+        for object in stations:
+            if river == object.river:
+                n += 1
+        name_n_num.append((river,n))
+        n = 0
+
+    sorted_by_key(name_n_num, 1, reverse=True)
+
+    temp_0 = name_n_num[N]
+
+    for i in range(0,N-1):
+        name_n_num_N.append(name_n_num[i])
+
+    for item in name_n_num:
+        if item[1] == temp_0[1]:
+            name_n_num_N.append(item)
+
+    return name_n_num_N
 
 """------------------------------------------"""
