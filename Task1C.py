@@ -10,7 +10,6 @@ def stations_within_radius(stations, centre, r):
     station_y_coordinate = []
     for i in stations:
         station_coordinates.append(i.coord)
-    for i in stations:
         names.append(i.name)
 
     for i in range(len(station_coordinates)):
@@ -18,18 +17,23 @@ def stations_within_radius(stations, centre, r):
     
     for i in range(len(station_coordinates)):
         station_y_coordinate.append(station_coordinates[i][1])
-    
+
+
     for i in range(len(station_coordinates)):
         a = station_x_coordinate[i]
         b = station_y_coordinate[i]
-        distance = ((a - centre)**2 + b**2)**0.5
+        distance = ((a - centre[0])**2 + b**2)**0.5
         distance_from_position.append(distance)
+    
+    print(distance_from_position)
 
-    for i in distance_from_position:
-        if i > r:
-            names.pop(i)
+    for i in range(len(distance_from_position) - 1):
+        if distance_from_position[i] > r:
+            names.remove(i)
         else:
             continue
+    return len(names)
+    
+    
 
-build_station_list()
-stations_within_radius(stations, (52.2053, 0.1218) , 10000)
+print(stations_within_radius(build_station_list(), (52.2053, 0.1218) , 10))

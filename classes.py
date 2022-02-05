@@ -1,3 +1,6 @@
+from sympy import E
+
+
 class students:
     def __init__(self, name, age):
         self.name = name
@@ -30,4 +33,15 @@ for i in range(len(tuple_list)):
 
 print(first_tuple)
 print(students.age_square(student_1))
+
+b = [1 , 10 , 19 , 28 , 37]
+
+counter = 0
+for i in range( len(b) - 1 ):
+    if b[i] > 15:
+        b.pop(i)
+    else:
+        pass
+          
+print(b)
 
