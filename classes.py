@@ -1,4 +1,4 @@
-from sympy import E
+"""from sympy import E
 
 
 class students:
@@ -14,8 +14,7 @@ class students:
         return x
     
     def age_square(self):
-        x = self.age
-        return x
+        print((self.age)**2)
 
 
 student_1 = students("Ben" , "24")
@@ -31,6 +30,7 @@ for i in range(len(tuple_list)):
     first_tuple.append(tuple_list[i][0])
 
 
+print(a)
 print(first_tuple)
 print(students.age_square(student_1))
 
@@ -43,5 +43,28 @@ for i in range( len(b) - 1 ):
     else:
         pass
           
-print(b)
+d = [4 , 8 , 12 , 16 , 20]
+sum = 0
+for i in range(len(d)):
+    sum = sum + d[i]
+print(sum)
+
+
+
+
+list1 = [1, 2, 5, 9, 1000]
+list2 = ["q", "w", "e", "f", "g"]
+
+for i in range(len(list1)):
+    a = list2[i]
+    print(a)
+    list2.remove(a)
+
+
+
+lists = (5, 10 , 15 , 20 , 25)
+print(lists[1]- lists[0])"""
+
+
+
 
