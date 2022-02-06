@@ -12,19 +12,19 @@ from haversine import haversine
 def stations_by_distance(stations, p):
     
     #Variables
-    name_n_dis = []      #Final list of tuples with name and distance to p
-    s_name = []          #List of names
+    s_n_dis = []         #Final list of tuples with names and distances to p
+    s_name = []          #List of station names
     s_dis = []           #List of distances
     
     for location in stations:
-        s_name.append(location.name)                 #Get names
+        s_name.append(location.name)                 #Get station names
         s_dis.append(haversine(location.coord, p))   #Calculate distances
 
     #Create the list of tuples
     for i in range(len((s_name))):
-        name_n_dis.append((s_name[i], s_dis[i]))
+        s_n_dis.append((s_name[i], s_dis[i]))
 
-    return sorted_by_key(name_n_dis, 1)
+    return sorted_by_key(s_n_dis, 1)
 
 """------------------------------------------"""
 
