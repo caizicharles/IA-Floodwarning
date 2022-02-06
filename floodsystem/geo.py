@@ -31,33 +31,25 @@ def stations_by_distance(stations, p):
 """Task 1C"""
 
 def stations_within_radius(stations, centre, r):
+    from haversine import haversine
     distance_from_position = []
-    names = []
+    names_1 = []
+    names_2 = []
     station_coordinates = []
-    station_x_coordinate = []
-    station_y_coordinate = []
+
     for i in stations:
         station_coordinates.append(i.coord)
-    for i in stations:
-        names.append(i.name)
-
-    for i in range(len(station_coordinates)):
-        station_x_coordinate.append(station_coordinates[i][0])
-    
-    for i in range(len(station_coordinates)):
-        station_y_coordinate.append(station_coordinates[i][1])
-    
-    for i in range(len(station_coordinates)):
-        a = station_x_coordinate[i]
-        b = station_y_coordinate[i]
-        distance = ((a - centre)**2 + b**2)**0.5
+        names_1.append(i.name)
+        distance = haversine(i.coord, centre)
         distance_from_position.append(distance)
 
-    for i in distance_from_position:
-        if i > r:
-            names.pop(i)
-        else:
-            continue
+    for i in range(len(distance_from_position)):
+        if distance_from_position[i] < r:
+            names_2.append(names_1[i])
+    
+    names_2.sort()
+    return names_2
+  
 
 """------------------------------------------"""
 
