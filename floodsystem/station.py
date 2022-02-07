@@ -39,8 +39,8 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
     
-    def typical_range_consistent(stations):
-        a = stations.typical_range
+    def typical_range_consistent(self):
+        a = self.typical_range
         if a == None:
             return False
         elif a[1] < a[0]:
