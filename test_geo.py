@@ -71,10 +71,8 @@ def test_D_2():
 def test_E():
 
     a = rivers_by_station_number(build_station_list(), 9)
-    b = []
 
-    [b.append(i) for i in a if i not in b]
-    assert len(a) == len(b)   #test for no repetition
+    assert len(a) == len(set(a))   #test for no repetition
     
 #test_E()
 
