@@ -6,6 +6,8 @@ geographical data.
 
 """
 
+"""Task 1B"""
+
 from .utils import sorted_by_key  # noqa
 from haversine import haversine
 
@@ -129,14 +131,14 @@ def rivers_by_station_number(stations, N):
     temp_0 = name_n_num_1[N]    #Get [N]
     temp_1 = []                 #Final list but WITHOUT repetition check
     
-    #First print from [0] to [N]
+    #First print from [0] to [N-1]
     for i in range(0, N-1):
         temp_1.append(name_n_num_1[i])
     
     #Add [N] and subsequent elements if n is the same
     [temp_1.append(item) for item in name_n_num_1 if item[1] == temp_0[1]]
 
-    #Check for repetitionn
+    #Check for repetition
     [name_n_num_N.append(j) for j in temp_1 if j not in name_n_num_N]
 
     return name_n_num_N

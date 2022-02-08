@@ -5,7 +5,7 @@ def show():
     
     #Variables
     stations = build_station_list()
-    show_list_0 = stations_by_distance(build_station_list(), (0, 0))  #Calls function that calculates distance
+    show_list_0 = stations_by_distance(stations, (0, 0))  #Calls function that calculates distance
     show_list_closest_0 = []                                          #List of tuples of 10 names and closest distances
     closest = []                                                      #10 closest by station, town, distance
     show_list_furthest_0 = []                                         #List of tuples of 10 names and furthest distances

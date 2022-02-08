@@ -1,12 +1,10 @@
-
-from floodsystem.station import MonitoringStation
-from floodsystem.station import inconsistent_typical_range_stations
 from floodsystem.stationdata import build_station_list
-
+from floodsystem.station import inconsistent_typical_range_stations
 
 stations = build_station_list()
 x = inconsistent_typical_range_stations(stations)
 print(x)
+
 #returns a list of stations with inconsistent data
 
 def stations_with_inconsistent_data_test(x):
@@ -22,3 +20,5 @@ def stations_with_inconsistent_data_test(x):
     #this is the updated list
 
 stations_with_inconsistent_data_test(x)
+
+
