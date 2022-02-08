@@ -21,4 +21,4 @@ def stations_with_inconsistent_data_test(x):
     assert x == list_of_stations
     #this is the updated list
 
-stations_with_inconsistent_data_test()
+stations_with_inconsistent_data_test(x)
