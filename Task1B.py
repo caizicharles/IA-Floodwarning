@@ -25,7 +25,7 @@ def show():
         for x in stations:
             if x.name == i[0]:
                 temp.append((i[0], x.town, i[1]))
-                closest.append(tuple(temp))
+                closest.append(temp[0])
     
     #Add in furthest town names
     for j in show_list_furthest_0:
@@ -33,8 +33,8 @@ def show():
         for x in stations:
             if x.name == j[0]:
                 temp_0.append((j[0], x.town, j[1]))
-                furthest.append(tuple(temp_0))
+                furthest.append(temp_0[0])
 
-    return closest, furthest
+    return furthest
 
 print(show())
