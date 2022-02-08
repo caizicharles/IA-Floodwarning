@@ -5,4 +5,8 @@ from floodsystem.stationdata import build_station_list
 
 
 stations = build_station_list()
-print(inconsistent_typical_range_stations(stations))
+x = inconsistent_typical_range_stations(stations)
+print(x)
+
+
+def stations_with_inconsistent_data

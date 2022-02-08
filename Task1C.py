@@ -6,6 +6,7 @@ from floodsystem.geo import stations_within_radius
 stations_test = build_station_list()
 x = stations_within_radius(stations_test, (52.2053, 0.1218) , 10)
 #x is a list of all stations within 10km range
+print(x)
 
 def stations_within_radius_test(x):
     list_of_stations = ['Bin Brook', 
