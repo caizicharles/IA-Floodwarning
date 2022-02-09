@@ -67,7 +67,7 @@ def test_E():
 
 """Task 1F"""
 
-def stations_with_inconsistent_data_test(x):
+def test_stations_with_inconsistent_data():
 
     stations = build_station_list()
     x = inconsistent_typical_range_stations(stations)
