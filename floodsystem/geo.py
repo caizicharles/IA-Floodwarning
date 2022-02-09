@@ -33,7 +33,6 @@ def stations_by_distance(stations, p):
 """Task 1C"""
 
 def stations_within_radius(stations, centre, r):
-    from haversine import haversine
     distance_from_position = []
     names_1 = []
     names_2 = []
