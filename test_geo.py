@@ -23,10 +23,11 @@ def test_B():
 
 """Task 1C"""
 
-stations_test = build_station_list()
-x = stations_within_radius(stations_test, (52.2053, 0.1218) , 10)
+def test_stations_within_radius(x):
 
-def stations_within_radius_test(x):
+    stations_test = build_station_list()
+    x = stations_within_radius(stations_test, (52.2053, 0.1218) , 10)
+
     list_of_stations = ['Bin Brook', 
     'Cambridge Baits Bite', "Cambridge Byron's Pool", 'Cambridge Jesus Lock', 'Comberton',
      'Dernford', 'Girton', 'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
@@ -67,11 +68,12 @@ def test_E():
 
 """Task 1F"""
 
-stations = build_station_list()
-x = inconsistent_typical_range_stations(stations)
-#returns a list of stations with inconsistent data
-
 def stations_with_inconsistent_data_test(x):
+
+    stations = build_station_list()
+    x = inconsistent_typical_range_stations(stations)
+    #returns a list of stations with inconsistent data
+
     list_of_stations = ['Airmyn', 'Blacktoft', 'Braunton', 'Brentford', 
     'Broomfleet Weighton Lock', 'East Hull Hedon Road', 'Eastbourne Harbour', 
     'Fleetwood', 'Goole', 'Hedon Thorn Road Bridge', 'Hedon Westlands Drain', 
