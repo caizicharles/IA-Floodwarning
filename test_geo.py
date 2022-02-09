@@ -23,7 +23,7 @@ def test_B():
 
 """Task 1C"""
 
-def test_stations_within_radius(x):
+def test_stations_within_radius():
     
     x = stations_within_radius(build_station_list(), (52.2053, 0.1218) , 10)
     list_of_stations = ['Bin Brook', 
