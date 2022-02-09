@@ -39,4 +39,4 @@ def execute_1():  #Prints the names of stations on given rivers
 
     return river_1, river_2, river_3
 
-#print(execute_1())
+print(execute_1())

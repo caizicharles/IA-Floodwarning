@@ -23,7 +23,7 @@ def show_c():
 
     return closest
 
-#print(show_c())
+print(show_c())
 
 def show_f():
     
@@ -47,4 +47,4 @@ def show_f():
 
     return furthest
 
-#print(show_f())
+print(show_f())
