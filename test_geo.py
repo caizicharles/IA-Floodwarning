@@ -19,8 +19,6 @@ def test_B():
     for i in a:
         assert isinstance(i[0], str) == True   #test if station names are in the first index
 
-#test_B()
-
 """------------------------------------------"""
 
 """Task 1C"""
@@ -34,8 +32,6 @@ def stations_within_radius_test(x):
      'Dernford', 'Girton', 'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
     assert list_of_stations == x
      #this is the list of the stations on moodle 
-   
-#stations_within_radius_test(x)
 
 """------------------------------------------"""
 
@@ -44,25 +40,18 @@ def stations_within_radius_test(x):
 def test_D_1():
 
     a = rivers_with_station(build_station_list())
+    
+    assert len(a) == len(set(a))   #test for no repetition
 
-    #test for no repetition
-    for i in a:
-        assert i != i+1
-
-    #test for correct input
     for j in a:
-        assert type(j) == str
+        assert type(j) == str   #test for correct input
 
 def test_D_2():
 
     a = stations_by_river(build_station_list())
-    b = list(a.keys())
+    b = a.keys()
     
     assert len(b) == len(set(b))   #test for no repetition
-
-#test_D_1()
-#test_D_2()
-
 
 """------------------------------------------"""
 
@@ -71,12 +60,8 @@ def test_D_2():
 def test_E():
 
     a = rivers_by_station_number(build_station_list(), 9)
-    b = []
 
-    [b.append(i) for i in a if i not in b]
-    assert len(a) == len(b)   #test for no repetition
-    
-#test_E()
+    assert len(a) == len(set(a))   #test for no repetition
 
 """------------------------------------------"""
 
@@ -97,7 +82,5 @@ def stations_with_inconsistent_data_test(x):
     'Topsham', 'Totnes', 'Truro Harbour', 'Wilfholme Pumping Station']
     assert x == list_of_stations
     #this is the updated list
-
-stations_with_inconsistent_data_test(x)
 
 """------------------------------------------"""
