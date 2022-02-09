@@ -9,7 +9,7 @@ geographical data.
 """Task 1B"""
 
 from .utils import sorted_by_key  # noqa
-from .haversine import haversine
+from .haversine import *
 
 def stations_by_distance(stations, p):
     
