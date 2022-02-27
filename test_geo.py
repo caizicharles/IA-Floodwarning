@@ -71,17 +71,21 @@ def test_stations_with_inconsistent_data():
 
     stations = build_station_list()
     x = inconsistent_typical_range_stations(stations)
-    #returns a list of stations with inconsistent data
+    stations_name = []
+    typical_range_stations = []
+    stations_with_incorrect_data = []
+    
+    for i in stations:
+        stations_name.append(i.name)
+        typical_range_stations.append(i.typical_range)
+    
+    for i in range(len(typical_range_stations)):
+        if typical_range_stations[i] == None:
+            stations_with_incorrect_data.append(stations_name[i])
+        elif typical_range_stations[i][0] > typical_range_stations[i][1]:
+            stations_with_incorrect_data.append(stations_name[i])
+        stations_with_incorrect_data.sort()
+    assert x == stations_with_incorrect_data
 
-    list_of_stations = ['Airmyn', 'Blacktoft', 'Braunton', 'Brentford', 
-    'Broomfleet Weighton Lock', 'East Hull Hedon Road', 'Eastbourne Harbour', 
-    'Fleetwood', 'Goole', 'Hedon Thorn Road Bridge', 'Hedon Westlands Drain', 
-    'Hempholme Pumping Station Roam Drain', 'Hull Barrier Victoria Pier', 
-    'Hull High Flaggs, Lincoln Street', 'Littlehampton', 'Medmerry', 
-    'North America', 'Paull', 'Salt End', 'Sandwich Quay', 
-    'Sindlesham Mill', 'Stone Creek', 'Templers Road', 'Tickton Pumping Station', 
-    'Topsham', 'Totnes', 'Truro Harbour', 'Wilfholme Pumping Station']
-    assert x == list_of_stations
-    #this is the updated list
 
 """------------------------------------------"""
