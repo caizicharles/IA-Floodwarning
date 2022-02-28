@@ -7,5 +7,3 @@ x = inconsistent_typical_range_stations(stations)
 print(x)
 y = test_geo.test_stations_with_inconsistent_data()
 print(y)
-
-

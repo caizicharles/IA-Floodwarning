@@ -1,4 +1,3 @@
-from sre_constants import SRE_FLAG_UNICODE
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 
@@ -18,7 +17,7 @@ for i in stations:
         typical_range = i.typical_range
 print(levels)
 
-def plot_water_levels(stations, dates, levels):
+def plot_water_levels(station, dates, levels):
     typical_range_high = []
     typical_range_low = []
     for i in range(len(dates)):
@@ -31,7 +30,7 @@ def plot_water_levels(stations, dates, levels):
     plt.xlabel("data")
     plt.ylabel("water level (m)")
     plt.xticks(rotation=45);
-    plt.title("Bourton Dickler")
+    plt.title(station)
     plt.tight_layout()
     
     plt.plot(dates , typical_range_high)
@@ -39,4 +38,4 @@ def plot_water_levels(stations, dates, levels):
     
     plt.show()
 
-plot_water_levels(stations , dates , levels)
+plot_water_levels("Bourton Dickler" , dates , levels)

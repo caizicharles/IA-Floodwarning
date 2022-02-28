@@ -1,4 +1,4 @@
-from sre_constants import SRE_FLAG_UNICODE
+
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 from floodsystem.station import stations_highest_rel_level
@@ -8,9 +8,8 @@ from floodsystem.stationdata import update_water_levels
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-import datetime
 
-stations = build_station_list()
+
 
 def run():
 
@@ -23,16 +22,37 @@ def run():
     return stations_high_risk_level
 
 stations_at_risk = run()
-print(stations_at_risk)
+station_1 = stations_at_risk[0]
+
+stations = build_station_list()
+print(stations)
+
+update_water_levels(stations)
 
 
+
+import datetime
 for i in stations:
     if i.name == "Letcombe Bassett":
-        dt = 5
+        dt = 0.75
         dates, levels = fetch_measure_levels(i.measure_id , dt = datetime.timedelta(days=dt))
-        
+        typical_range = i.typical_range
+print(levels)
+
+def plot_water_levels(station, dates, levels):
     
-print(dates, levels)
+    plt.plot(dates , levels)
+
+    plt.xlabel("data")
+    plt.ylabel("water level (m)")
+    plt.xticks(rotation=45);
+    plt.title(station)
+    plt.tight_layout()
+    
+    plt.show()
+
+plot_water_levels(stations_at_risk[0] , dates , levels)
+
 
 
 
