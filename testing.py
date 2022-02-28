@@ -1,10 +1,9 @@
 from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list, update_water_levels
-from floodsystem.flood import stations_level_over_threshold
 
 from floodsystem.station import inconsistent_typical_range_stations
 
-def stations_level_over_threshold(stations, tol):
+def testing(stations):
     
     inconsistent_names = inconsistent_typical_range_stations(stations)
     station_names = set()
@@ -14,13 +13,13 @@ def stations_level_over_threshold(stations, tol):
 
     for i in stations:
         for j in inconsistent_names:
-            if i.typical_range != None and i.latest_level != None:
+            if i.name != j and i.latest_level != None:
                 station_names.add(i.name)
 
     for k in station_names:
         for w in stations:
             if k == w.name:
-                test.append(w)
+                test.append(w.typical_range)
 
 
     return test
@@ -28,7 +27,7 @@ def stations_level_over_threshold(stations, tol):
 def run():
     stations = build_station_list()
     update_water_levels(stations)
-    station = stations_level_over_threshold(stations, 0.9)
+    station = testing(stations)
     #for n in station:
         #print(n[0], " ", n[1])
 
