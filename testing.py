@@ -8,20 +8,15 @@ def testing(stations):
     inconsistent_names = inconsistent_typical_range_stations(stations)
     station_names = set()
 
-    test = []
-    t = []
+    test = set()
 
     for i in stations:
         for j in inconsistent_names:
-            if i.name != j and i.latest_level != None:
+            if i.name != j and i.typical_range != None and i.latest_level != None:
                 station_names.add(i.name)
-
-    for k in station_names:
-        for w in stations:
-            if k == w.name:
-                test.append(w.typical_range)
-
-
+                test.add(MonitoringStation.relative_water_level(i))
+                
+        
     return test
 
 def run():

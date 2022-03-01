@@ -52,17 +52,17 @@ class MonitoringStation:
         low = self.typical_range[0]
         range_diff = self.typical_range[1] - self.typical_range[0]
         data = self.latest_level
-
+        
         return (data - low)/range_diff
 
 
 
 def inconsistent_typical_range_stations(stations):
-    stations_inconsistent = []
+    stations_inconsistent = set()
     for i in stations:
         if MonitoringStation.typical_range_consistent(i) == False:
-            stations_inconsistent.append(i.name)
+            stations_inconsistent.add(i.name)
         else:
             continue
-    stations_inconsistent.sort()
+    sorted(stations_inconsistent)
     return stations_inconsistent
