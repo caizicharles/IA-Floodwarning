@@ -11,8 +11,7 @@ def testing(stations, tol):
     out_3 = []
 
     for i in stations:
-        for j in inconsistent_names:
-            if i.name != j and i.typical_range != None and i.latest_level != None:
+            if MonitoringStation.typical_range_consistent(i) != None and i.latest_level != None:
                 out.add((i.name, MonitoringStation.relative_water_level(i)))
 
     for k in out:
