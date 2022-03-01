@@ -6,8 +6,6 @@ for manipulating/modifying station data
 
 """
 
-from .utils import sorted_by_key
-
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -50,63 +48,18 @@ class MonitoringStation:
             return True
 
     def relative_water_level(self):
-        return self.typical_range
+        low = self.typical_range[0]
+        range_diff = self.typical_range[1] - self.typical_range[0]
+        data = self.latest_level
         
+        return (data - low)/range_diff
+
+
+
 def inconsistent_typical_range_stations(stations):
-    stations_inconsistent = []
+    stations_inconsistent = set()
     for i in stations:
         if MonitoringStation.typical_range_consistent(i) == False:
-            stations_inconsistent.append(i.name)
-        else:
-            continue
-    stations_inconsistent.sort()
+            stations_inconsistent.add(i.name)
+    sorted(stations_inconsistent)
     return stations_inconsistent
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def stations_highest_rel_level(stations, N):
-
-    dif = []
-    station_names = []
-    combine = []
-    output_0 = []
-    output = []
-
-    for station in stations:
-        if station.typical_range and station.latest_level != None:
-            a = station.typical_range
-            b = (a[0] + a[1])/2
-            c = station.latest_level - b
-            
-            if c >= 0:
-                station_names.append(station.name)
-                dif.append(c)
-
-    combine = [(station_names[i], dif[i]) for i in range(0, len(station_names)) ]
-        
-    output_0 = sorted_by_key(combine, 1, reverse=True)
-
-    output = [output_0[j] for j in range(0, N)]
-
-    return output
