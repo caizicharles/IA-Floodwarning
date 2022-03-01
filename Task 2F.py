@@ -1,16 +1,16 @@
 
 from floodsystem.stationdata import build_station_list
-from floodsystem.station import stations_highest_rel_level
+from floodsystem.flood import stations_highest_rel_level
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import update_water_levels
 
 from analysis import polyfit
-
+                                                                                                     
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from datetime import timedelta
-import datetime
+from datetime import datetime , timedelta
+
 
 stations = build_station_list()
 
@@ -30,7 +30,7 @@ stations_at_risk.pop(0)
 
 
 def plot_water_level_with_fit(station, dates, levels, p): 
-    poly, d0 = polyfit(dates, levels, 4)
+    poly, d0 = polyfit(dates, levels, p)
     times = []
     
     x = matplotlib.dates.date2num(dates)
