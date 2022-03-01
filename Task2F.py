@@ -9,8 +9,8 @@ from analysis import polyfit
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from datetime import datetime , timedelta
-
+from datetime import timedelta
+import datetime
 
 stations = build_station_list()
 
