@@ -45,9 +45,6 @@ def plot_water_level_with_fit(station, dates, levels, p):
         typical_range_high.append(typical_range[1])
         typical_range_low.append(typical_range[0])
 
-    print(typical_range_high)
-    print(typical_range_low)
-
     plt.plot(times , levels , '.' , label="water level")
     plt.plot(times , typical_range_high , label="typical range high")
     plt.plot(times , typical_range_low , label="typical range low")

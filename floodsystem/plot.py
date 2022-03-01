@@ -44,8 +44,8 @@ def plot_water_levels(station, dates, levels):
     plt.title(station)
     plt.tight_layout()
     
-    plt.plot(dates , typical_range_high , "-b" , label="typical high")
-    plt.plot(dates , typical_range_low , "-b" , label="typical low")
+    plt.plot(dates , typical_range_high , "-y" , label="typical high")
+    plt.plot(dates , typical_range_low , "-o" , label="typical low")
     
     plt.legend()
     plt.show()
