@@ -3,9 +3,10 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.stationdata import update_water_levels
 from floodsystem.station import stations_highest_rel_level
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-
+from floodsystem.station import inconsistent_typical_range_stations
 import datetime
 
 stations = build_station_list()
@@ -23,7 +24,9 @@ def run():
 stations_at_risk = run()
 stations_at_risk.pop(0)
 
-stations = build_station_list()
+y = inconsistent_typical_range_stations(stations)
+print(y)
+
 update_water_levels(stations)
 
 def plot_water_levels(station, dates, levels):
@@ -34,7 +37,7 @@ def plot_water_levels(station, dates, levels):
         typical_range_low.append(typical_range[1])  
     
     
-    plt.plot(dates , levels)
+    plt.plot(dates , levels , label="water level")
 
     plt.xlabel("data")
     plt.ylabel("water level (m)")
@@ -42,18 +45,34 @@ def plot_water_levels(station, dates, levels):
     plt.title(station)
     plt.tight_layout()
     
-    plt.plot(dates , typical_range_high)
-    plt.plot(dates , typical_range_low)
+    plt.plot(dates , typical_range_high , "-b" , label="typical high")
+    plt.plot(dates , typical_range_low , "-b" , label="typical low")
     
+    plt.legend()
     plt.show()
 counter = 0 
 for i in stations:
     if i.name in stations_at_risk:
-        dt = 0.75
+        dt = 10
         dates, levels = fetch_measure_levels(i.measure_id , dt = datetime.timedelta(days=dt))
         typical_range = i.typical_range
         plot_water_levels(i.name , dates , levels)
         counter = counter + 1
         if counter > 5:
             raise RuntimeError("All of the 5 stations have displayed the outputs")
-    
+
+
+def plot_water_level_with_fit(station, dates, levels, p): 
+    x = dates
+    y = levels
+    p_coeff = np.polyfit(x , y , p)
+    poly = np.poly1d(p_coeff)
+    plt.plot(x , y , '.')
+    plt.xlabel("time")
+    plt.ylabel("water level")
+    plt.xticks(rotation=45);
+    plt.title(station)
+    x1 = np.linspace(x[0] , x[-1] , 30)
+    plt.plot(x1 , poly(x1))
+    plt.show()
+    return poly
