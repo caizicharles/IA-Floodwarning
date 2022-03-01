@@ -7,17 +7,25 @@ from .utils import sorted_by_key    #Task 2C
 def stations_level_over_threshold(stations, tol):
     
     inconsistent_names = inconsistent_typical_range_stations(stations)
-    station_names = set()
+    out = set()
+    out_2 = []
+    out_3 = []
 
     for i in stations:
-        if i.latest_level != None:
-            for j in inconsistent_names:
-                if i.name != j:
-                    station_names.add(i.name)
+        for j in inconsistent_names:
+            if i.name != j and i.typical_range != None and i.latest_level != None:
+                out.add((i.name, MonitoringStation.relative_water_level(i)))
 
-    return station_names
-            
-    
+    for k in out:
+        out_2.append(k)
+
+    for l in out_2:
+        if l[1] >= tol:
+            out_3.append(l)
+
+    output = sorted_by_key(out_3, 1, reverse=True)
+                
+    return output
 
 """------------------------------------------"""
 
