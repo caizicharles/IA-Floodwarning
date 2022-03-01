@@ -6,9 +6,8 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     station = stations_level_over_threshold(stations, 0.9)
-    '''for n in station:
-        print(n[0], " ", n[1])'''
-    print(station)
+    for n in station:
+        print(n[0], " ", n[1])
 
 if __name__ == "__main__":
     print("*** Task 2B: CUED Part IA Flood Warning System ***")
