@@ -9,8 +9,10 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     name_ratio = stations_level_over_threshold(stations, 1)
+    dt = 10
 
     temp = set()
+    
 
 
     for i in name_ratio:
@@ -19,15 +21,16 @@ def run():
                 temp.add(j)
 
     for k in temp:
-        dates, levels = fetch_measure_levels(k.measure_id , dt = 10)
+        dates, levels = fetch_measure_levels(k.measure_id , dt)
         poly, d0 = polyfit(dates, levels, 4)
 
-        temp = []
+        coe = []
         for x in poly:
-            temp.append(x)
+            coe.append(x)
         
-        d = np.poly1d(temp)
-        d.deriv()
+        function = np.poly1d(coe)
+        derivative = np.polyder(function)
+        value = derivative()
 
 
 
