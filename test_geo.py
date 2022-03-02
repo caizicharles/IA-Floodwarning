@@ -8,7 +8,7 @@ from floodsystem.station import inconsistent_typical_range_stations #F
 
 """Task 1B"""
 
-def test_B():
+def test_stations_by_distance():
 
     a = stations_by_distance(build_station_list(), (1,1))
     b = a[0]
@@ -37,7 +37,7 @@ def test_stations_within_radius():
 
 """Task 1D"""
 
-def test_D_1():
+def test_rivers_with_station():
 
     a = rivers_with_station(build_station_list())
     
@@ -46,7 +46,7 @@ def test_D_1():
     for j in a:
         assert type(j) == str   #test for correct input
 
-def test_D_2():
+def test_stations_by_river():
 
     a = stations_by_river(build_station_list())
     b = a.keys()
@@ -57,7 +57,7 @@ def test_D_2():
 
 """Task 1E"""
 
-def test_E():
+def test_rivers_by_station_number():
 
     a = rivers_by_station_number(build_station_list(), 9)
 

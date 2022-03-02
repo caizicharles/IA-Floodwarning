@@ -1,15 +1,32 @@
-"""                      Task 2B                          """
-
-
 from floodsystem.stationdata import update_water_levels, build_station_list
-from floodsystem.flood import stations_level_over_threshold
+from floodsystem.flood import stations_level_over_threshold, stations_highest_rel_level
 from floodsystem.station import inconsistent_typical_range_stations
+from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.analysis import polyfit
+from Task2G import warning
+from floodsystem.utils import sorted_by_key
 
-stations = build_station_list()
-update_water_levels(stations)
+import numpy as np
+from datetime import timedelta
+
+"""Task 2B"""
+
+def test_stations_level_over_threshold():
+    tol = 0.8
+
+    stations = build_station_list()
+    update_water_levels(stations)
+    data = stations_level_over_threshold(stations, tol)
+
+    for i in data:
+        a = i[1]
+        assert a >= tol
+
+    assert sorted_by_key(data, 1, reverse=True) == data
 
 
-def stations_level_over_threshold(stations, tol = 0.8):
+
+'''def stations_level_over_threshold(stations, tol = 0.8):
     station_names = []
     latest_level_stations = []
     typical_range_stations = []
@@ -50,4 +67,45 @@ def stations_level_over_threshold(stations, tol = 0.8):
 
 stations_above_limit = stations_level_over_threshold(stations , 0.8)
  
-print(stations_above_limit)
+print(stations_above_limit)'''
+
+"""------------------------------------------"""
+
+"""Task 2C"""
+
+def test_stations_highest_rel_level():
+    N = 10
+
+    stations = build_station_list()
+    update_water_levels(stations)
+    data = stations_highest_rel_level(stations, N)
+
+    assert len(data) == N
+
+"""------------------------------------------"""
+
+"""Task 2E"""
+
+def test_polyfit():
+    stations = build_station_list()
+    update_water_levels(stations)
+    a = stations[0]
+
+    dates, levels = fetch_measure_levels(a.measure_id , dt = timedelta(days = 2))
+    poly, d0 = polyfit(dates, levels, 4)
+
+    return poly, d0
+
+"""------------------------------------------"""
+
+"""Task 2F"""
+
+"""------------------------------------------"""
+
+"""Task 2G"""
+
+def test_warning():
+    a = warning()
+
+    assert len(a) == len(set(a))
+
