@@ -3,8 +3,7 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.analysis import polyfit
 from floodsystem.datafetcher import fetch_measure_levels
 import numpy as np
-import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 def warning():
 
@@ -51,10 +50,8 @@ def warning():
     for y in range(0, len(severity)):
         output.append((station_name[y], severity[y]))
     
-    print(output)
-
-
+    return output
 
 if __name__ == "__main__":
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
-    warning()
+    print(warning())
