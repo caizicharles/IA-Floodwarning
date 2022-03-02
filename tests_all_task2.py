@@ -132,23 +132,6 @@ def test_plot_water_level_with_fit():
             #checks whether the most recent level from the list 'levels' is equil to the latest level added from 'update_water_levels'
             break
 
-test_plot_water_level_with_fit()
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """------------------------------------------"""
 
 """Task 2G"""
