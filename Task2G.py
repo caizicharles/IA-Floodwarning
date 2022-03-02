@@ -2,6 +2,7 @@ from floodsystem.flood import stations_level_over_threshold
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.analysis import polyfit
 from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.utils import sorted_by_key
 import numpy as np
 from datetime import timedelta
 
@@ -50,7 +51,7 @@ def warning():
     for y in range(0, len(severity)):
         output.append((station_name[y], severity[y]))
     
-    return output
+    return sorted_by_key(output, 1, reverse=False)
 
 if __name__ == "__main__":
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
