@@ -9,8 +9,6 @@ def polyfit(dates, levels, p):
     shift = x[-1]       # The last entry (the longest ago) in x
     times = x - shift
 
-    print(times)
-
     p_coeff = np.polyfit(times , levels , p)
     poly = np.poly1d(p_coeff)
     
