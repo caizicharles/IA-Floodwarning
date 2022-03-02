@@ -13,6 +13,7 @@ def warning():
     name_ratio = stations_level_over_threshold(stations, 1)
     t = 10
 
+    station_name_set = set()
     station_name = []
     station_data = set()
     station_list = []
@@ -32,11 +33,14 @@ def warning():
             station_list.append(x)
 
     for k in station_list:
-        station_name.append(k.name)
+        station_name_set.add(k.name)
         dates, levels = fetch_measure_levels(k.measure_id , dt = timedelta(days = t))
         poly, d0 = polyfit(dates, levels, 4)
         derivative = np.polyder(poly)
         value.append(derivative(9))
+
+    for y in station_name_set:
+        station_name.append(y)
 
     for gradient in value:
         if gradient < 0.1:
@@ -48,8 +52,8 @@ def warning():
         else:
             severity.append("Severe")
 
-    for y in range(0, len(severity)):
-        output.append((station_name[y], severity[y]))
+    for z in range(0, len(severity)):
+        output.append((station_name[z], severity[z]))
     
     return sorted_by_key(output, 0, reverse=False)
 
