@@ -51,7 +51,7 @@ def warning():
     for y in range(0, len(severity)):
         output.append((station_name[y], severity[y]))
     
-    return sorted_by_key(output, 1, reverse=False)
+    return sorted_by_key(output, 0, reverse=False)
 
 if __name__ == "__main__":
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
