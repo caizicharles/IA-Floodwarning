@@ -3,10 +3,8 @@ from floodsystem.flood import stations_highest_rel_level
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.analysis import polyfit
 
-import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from datetime import timedelta
 import datetime
 
 stations = build_station_list()
