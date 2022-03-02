@@ -10,3 +10,7 @@ dt = 2
 dates, levels = fetch_measure_levels(y.measure_id , dt = datetime.timedelta(days = dt))
 poly, d0 = polyfit(dates, levels, 4)
 print(poly, d0)
+
+
+y = np.poly1d([1 , 2 , 3])
+print(y.order)

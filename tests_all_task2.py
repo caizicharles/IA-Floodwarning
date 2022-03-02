@@ -1,3 +1,4 @@
+from pyrsistent import v
 from floodsystem.stationdata import update_water_levels, build_station_list
 from floodsystem.flood import stations_level_over_threshold, stations_highest_rel_level
 from floodsystem.station import inconsistent_typical_range_stations
@@ -99,6 +100,54 @@ def test_polyfit():
 """------------------------------------------"""
 
 """Task 2F"""
+
+def test_plot_water_level_with_fit():
+    stations = build_station_list()
+    print(update_water_levels(stations))
+    
+    def run():
+
+        stations = build_station_list()
+        update_water_levels(stations)
+        station = stations_highest_rel_level(stations, 6)
+    
+        stations_high_risk_level = []
+        for n in station:
+            stations_high_risk_level.append(n[0])
+        return stations_high_risk_level
+    
+    stations_at_risk = run()
+    stations_at_risk.pop(0)
+
+    for i in stations:
+        if i.name in stations_at_risk:
+            station_name = i.name
+            dates , levels = fetch_measure_levels(i.measure_id , dt = timedelta(days = 2))
+            poly, d0 = polyfit(dates , levels , 4)
+            assert(poly.order == 4)
+            #checks whether the order of the best fit polynomial is 4
+            
+            latest_level = i.latest_level
+            assert(levels[0] == latest_level)
+            #checks whether the most recent level from the list 'levels' is equil to the latest level added from 'update_water_levels'
+            break
+
+test_plot_water_level_with_fit()
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """------------------------------------------"""
 
