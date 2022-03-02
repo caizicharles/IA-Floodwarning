@@ -13,10 +13,9 @@ def warning():
     name_ratio = stations_level_over_threshold(stations, 1)
     t = 10
 
-    station_name_set = set()
     station_name = []
     station_data = set()
-    station_list = []
+    station_list = set()
     value = []
     severity = []
     output = []
@@ -30,17 +29,14 @@ def warning():
         if x.name == "Bissoe" or x.name == "Letcombe Bassett":
             continue
         else:
-            station_list.append(x)
+            station_list.add(x)
 
     for k in station_list:
-        station_name_set.add(k.name)
+        station_name.append(k.name)
         dates, levels = fetch_measure_levels(k.measure_id , dt = timedelta(days = t))
         poly, d0 = polyfit(dates, levels, 4)
         derivative = np.polyder(poly)
         value.append(derivative(9))
-
-    for y in station_name_set:
-        station_name.append(y)
 
     for gradient in value:
         if gradient < 0.1:
